@@ -3,6 +3,7 @@ VAR readLetter = false
 VAR truthVisits = 0
 VAR escapedKeys = false
 VAR patient = false
+VAR bringOnTruth = false
 -> Start
 == Start == 
 //reset variables when take larger loop
@@ -11,7 +12,8 @@ VAR patient = false
 ~truthVisits = 0
 ~escapedKeys = false
 ~patient = false
-The ills of conventional living have been weighing on you more than usual. For as long as you can remember, your escape for this common ailment, has been nature. To distance yourself from modern society, you decide to take your frequented trail in the forest just behind your house. Normally, you stay within view of your home, for fear of discovering what lurks just beyond everything you know, but something feels different today...
+~bringOnTruth = false
+The ills of conventional living have been weighing on you more than usual. For as long as you can remember, your escape for this common ailment has been nature. To distance yourself from modern society, you decide to take your frequented trail in the forest just behind your house. Normally, you stay within view of your home, in fear of discovering what lurks just beyond everything you know, but something feels different today...
 
 + You decide to [leave the view of your house] venture into the unexplored wilderness
 -> Exploration
@@ -86,7 +88,7 @@ This is just what you had been in search of when you left the house today. Sudde
 -> Comfort
 
 == problemOfIdenticals == 
-With {metaLoopCount -1} keys in your pocket, and the ultimate lock in front of you. You can try your hand at the ones in your pocket. However, you can only try one of the keys in your pocket and must pick at random. 
+With {metaLoopCount -1} keys in your pocket, and the ultimate lock in front of you. You are granted the opportunity to attempt unlocking it. However, you can only try one of the keys in your pocket and must pick at random. 
 + Try Key {RANDOM(1, metaLoopCount -1)} // random number, inclusive bounds 
 Not Right! You must repeat the cycle!
 ~patient = false
@@ -104,8 +106,9 @@ Suddenly, glowing, white letters arrange themselves in the sky, forming the word
 
 == Truth ==
 Can you handle the truth?
-+ [Are you kidding, I already endured Sicart's love letter.] Bring on the truth.
++ {!bringOnTruth} [Are you kidding, I already endured Sicart's love letter.] Bring on the truth.
 ~truthVisits +=1 
+~bringOnTruth = true
 -> Truth
 + {truthVisits == 1} Why'd you ask me again?
 You said it yourself, you already read Sicart's letter. Go out into the world, beyond these woods and this game, break from procedurality, and play the game of life. 
